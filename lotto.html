@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOTTO</title>
+</head>
+<body>
+    <h1>Lotto GAME</h1>
+    <input id="inputNumber" type="number" placeholder="1부터 45까지 숫자를 입력하세요.">
+    <button onclick="rand()">게임 시작하기</button>
+        <script type="text/javascript">
+            function rand(){
+                let numbers =[];
+                for(let i=0; i<6; i++){
+                    let n = Math.floor(Math.random()*45) + 1;
+                    if(numbers.indexOf(n) === -1){
+                        numbers.push(n);
+                    }else{
+                        i--
+                    }
+                }
+                alert("당첨 번호 : " + numbers.sort((a,b)=> a-b));
+               
+                
+            }
+        </script>
+</body>
+</html>
