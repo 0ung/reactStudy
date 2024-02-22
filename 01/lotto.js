@@ -1,3 +1,4 @@
+//프롬프트로
 function num(){
     let randomNum = [];
     while(randomNum.length<6){
@@ -12,12 +13,51 @@ function num(){
     }
     randomNum.sort((a,b) => a-b);
     document.write(randomNum);
-    //취소 누르면 꺼지게 해야댐..
 }
 
+//input 태그로
+function printNum() {
+    let number = document.getElementById("number").value;
+    let inputNum = number.split(" ");
+    let intNum = [];
+    let prizeNum = [];
+    let count = 0;
+    for(i=0; i<inputNum.length; i++){
+        intNum.push(parseInt(inputNum[i]));
+    }
+    intNum.sort((a,b) => a-b);
+    if(intNum.length != 6){
+        alert("번호를 6개 입력하세요.");
+    }else{
+        document.getElementById("lottoNum").innerText = "입력 번호: " + intNum;
+
+        let randomNum = [];
+        while(randomNum.length<6){
+            let rand = Math.floor(Math.random()*45)+1;
+    
+            if(!randomNum.includes(rand)){
+                randomNum.push(rand);
+            }
+        }
+        randomNum.sort((a,b) => a-b);
+        document.getElementById("result").innerText = "뽑힌 번호: " + randomNum;
+
+        for(i=0; i<inputNum.length; i++){
+            for(j=0;j<randomNum.length; j++){
+                if(inputNum[i]==randomNum[j]){
+                    prizeNum.push(randomNum[j]);
+                    count++;
+                }
+            }
+        }
+        document.getElementById("prize").innerText = ("당첨 번호: " + prizeNum + ", 당첨 개수: " + count);
+    }    
+}
+
+//랜덤 숫자 생성
 function rand(){
     let randomNum = [];
-    while(randomNum.length<7){
+    while(randomNum.length<6){
         let rand = Math.floor(Math.random()*45)+1;
 
         if(!randomNum.includes(rand)){
@@ -25,9 +65,11 @@ function rand(){
         }
     }
     randomNum.sort((a,b) => a-b);
-    return randomNum;
+    document.getElementById("result").innerText = randomNum;
+
 }
 
+//게임 수 입력
 function gamePrice(){
     let price = prompt("게임을 진행할 금액을 입력하세요.(한 게임 당 천원)");
     if(price>=1000 && price%1000==0){
@@ -41,6 +83,7 @@ function gamePrice(){
         gamePrice();
     }
 }
+
 
 
 

@@ -7,8 +7,13 @@
 </head>
 <body>
     <h1>로또 프로그램</h1>
-    <button onclick="num()">번호 입력</button>
-    <button onclick="gamePrice()">게임 시작</button>
+    <div>
+        번호(공백으로 구분, 6개 입력): <input type="text" id="number" />
+        <button onclick="printNum()">게임 시작</button>
+    </div>
+    <div id = "lottoNum"></div>
+    <div id="result"></div>
+    <div id="prize"></div>
     <script src="lotto.js"></script>
 </body>
 </html>
