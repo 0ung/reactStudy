@@ -1,49 +1,36 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <button type="submit" onclick="getData(1)">제출</button>
-    <button type="submit" onclick="makeManual(1)">인풋태그 증가</button>
-    <div id="manual"></div>
-    <script>
-      function makeManual(cnt) {
-        let arr = (e) => {
-          let input = document.createElement("input");
-          input.setAttribute("class", "num" + e);
-          input.setAttribute("type", "number");
-          input.setAttribute("min", "1");
-          input.setAttribute("max", "45");
-          document.getElementById("manual").appendChild(input);
-        };
-        for (let i = 0; i < cnt; i++) {
-          for (let j = 0; j < 6; j++) {
-            arr(i);
-          }
-          document
-            .getElementById("manual")
-            .appendChild(document.createElement("br"));
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotto Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
         }
-      }
-
-      function getData(cnt) {
-        let result = [];
-        for (let j = 0; j < cnt; j++) {
-          let str = "num" + j;
-          let arr = [];
-          let a = document.getElementsByClassName(str);
-          for (let i = 0; i < a.length; i++) {
-            let data = a[i].value;
-            arr.push(data);
-          }
-          result.push(arr);
+        .container {
+            text-align: center;
         }
-        console.log(result);
-        return result;
-      }
-    </script>
-  </body>
+        #manual {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lotto Game</h1>
+        <button type="button" onclick="gameStart()">게임 시작</button>
+        <div id="manual"></div>
+        <div id="push"></div>
+        <div id="result"></div>
+    </div>
+    <script src="lotto.js"></script>
+</body>
 </html>
