@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOTTO</title>
+</head>
+<body>
+    <h1>Lotto GAME</h1>
+    <hr>
+    <input id="inputNumber" type="text" placeholder="1부터 45까지 숫자 6개 입력하세요">
+    <input type="button" value="게임 시작하기" onclick="rand()">
+
+        <script>
+            function rand(){
+
+                var inputNumber = document.getElementById("inputNumber");
+                var input = inputNumber.value.split(",").map(Number);
+
+                let numbers =[];
+                for(let i=0; i<6; i++){
+                    let n = Math.floor(Math.random()*45) + 1;
+                    if(numbers.indexOf(n) === -1){
+                        numbers.push(n);
+                    }else{
+                        i--
+                    }
+                }
+                let correct = numbers.filter(x=> input.includes(x));
+
+
+                
+
+                alert("입력한 숫자 : " + input.sort((a,b) => a-b)  + 
+                "\n당첨 번호 : " + numbers.sort((a,b)=> a-b)  +
+                 "\n정답 : " + correct);
+            }
+            
+
+        </script>
+</body>
+</html>
+
+<!-- let inputNumber = [];
+                for(let i=1; i<=6; i++){
+                    let input=parseInt(prompt( i + "번째 값을 입력하세요: "));
+
+                    if(input < 1 || input> 46){
+                        alert("1~46 숫자 내에서 입력하세요.");
+                        i--;
+                    }else if(inputNumber.indexOf(input) === -1){
+                        inputNumber.push(input);
+                    }else{
+                        i--;
+                        alert("중복된 값입니다. 다시 입력해주세요");
+                    }
+                    
+                } -->                                                                                                                                                                                        
